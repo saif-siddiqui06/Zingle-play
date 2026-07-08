@@ -28,7 +28,8 @@ class PurchaseService {
   }
 
   Future<void> buy(AppPlan plan) async {
-    final product = (await products()).where((item) => item.id == plan.productId).firstOrNull;
+    final matches = (await products()).where((item) => item.id == plan.productId);
+    final product = matches.isEmpty ? null : matches.first;
     if (product == null) return;
     await _iap.buyNonConsumable(purchaseParam: PurchaseParam(productDetails: product));
   }
@@ -48,8 +49,4 @@ class PurchaseService {
   }
 
   Future<void> dispose() => _subscription.cancel();
-}
-
-extension _FirstOrNull<E> on Iterable<E> {
-  E? get firstOrNull => isEmpty ? null : first;
 }

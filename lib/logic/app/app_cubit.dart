@@ -19,9 +19,15 @@ class AppCubit extends Cubit<AppState> {
     required AudioPlayerService audioService,
     required PurchaseService purchaseService,
     required StorageService storageService,
-  })  : _musicRepository = musicRepository,
+  })  :
+        // Public constructor names keep dependency injection readable across libraries.
+        // ignore: prefer_initializing_formals
+        _musicRepository = musicRepository,
+        // ignore: prefer_initializing_formals
         _audioService = audioService,
+        // ignore: prefer_initializing_formals
         _purchaseService = purchaseService,
+        // ignore: prefer_initializing_formals
         _storageService = storageService,
         super(const AppState()) {
     _subscriptions = [

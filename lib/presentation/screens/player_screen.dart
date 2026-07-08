@@ -26,8 +26,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
       final song = state.currentSong ?? widget.song;
-      final maxSeconds = state.duration.inSeconds <= 0 ? song.duration.inSeconds.toDouble().clamp(1, double.infinity) : state.duration.inSeconds.toDouble();
-      final currentSeconds = state.position.inSeconds.toDouble().clamp(0, maxSeconds);
+      final maxSeconds = state.duration.inSeconds <= 0 ? song.duration.inSeconds.toDouble().clamp(1, double.infinity).toDouble() : state.duration.inSeconds.toDouble();
+      final currentSeconds = state.position.inSeconds.toDouble().clamp(0, maxSeconds).toDouble();
       return Scaffold(
         appBar: AppBar(
           title: const Text('Playing From Top Hits'),

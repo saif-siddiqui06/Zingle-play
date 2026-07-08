@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemCount: recent.length,
-                    separatorBuilder: (_, __) => const SizedBox(width: 14),
+                    separatorBuilder: (context, index) => const SizedBox(width: 14),
                     itemBuilder: (context, index) {
                       final song = recent[index];
                       return SizedBox(

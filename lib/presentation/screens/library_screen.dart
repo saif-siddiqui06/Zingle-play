@@ -104,7 +104,7 @@ class _ArtistsList extends StatelessWidget {
           final entry = artists[index];
           final albums = entry.value.map((song) => song.album).toSet().length;
           return ListTile(
-            leading: CircleAvatar(child: Text(entry.key.characters.first.toUpperCase())),
+            leading: CircleAvatar(child: Text(entry.key.isEmpty ? '?' : entry.key[0].toUpperCase())),
             title: Text(entry.key),
             subtitle: Text('${entry.value.length} songs - $albums albums'),
             trailing: const Icon(Icons.more_vert),
